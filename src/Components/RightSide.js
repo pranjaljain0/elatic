@@ -15,6 +15,10 @@ function setWeather(obj){
         return(obj.main)
 }
 
+function setWeatherImage(obj){
+    if((typeof obj)=='object')
+    return("http://openweathermap.org/img/wn/"+obj.icon+"@2x.png")
+}
 
 const Container=styled.div`
     
@@ -72,7 +76,7 @@ function RightSide() {
             <ClockContainer>
                  <Clock/>
                     <WeatherCard>
-                        <img src="http://openweathermap.org/img/wn/10d@2x.png"></img>
+                        <img src={setWeatherImage(dataObj)}></img>
                         <WeatherStatus>
                             <p>{setWeather(dataObj)}</p>
                             <p className="city">{data.name}</p>
