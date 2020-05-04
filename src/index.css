@@ -1,12 +1,14 @@
 /* PRIMARY #EEA835 */
 /* GRAY #EAEEF0 */
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+/* WHITE #EAEEF0 */
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 body {
   margin: 0;
-  font-family: Montserrat;
+  font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 code {
@@ -18,7 +20,11 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 100vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  height: calc(100% - 60px);
 }
 
 .Panel{
@@ -27,5 +33,10 @@ code {
 }
 
 .Primary{
-  background-color: #EAEEF0;
+  background-color: aliceblue;
+}
+
+.react-calendar{
+  background-color: aliceblue !important;
+  border: 0px solid #fff !important;
 }

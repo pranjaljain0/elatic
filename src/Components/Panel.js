@@ -1,18 +1,31 @@
 import React from 'react'
 import {Row,Col} from 'react-bootstrap'
+import Pin from './Pin'
+import Schedule from './Schedule'
+import RightSide from './RightSide'
 
-function Panel(props) {
+function setType(val){
+    if(val==="pri")
+    return(
+    <Col className="Panel Primary">
+        <Pin/>
+    </Col>)
+    else if(val==="sec")
+    return(
+        <Col className="Panel">
+            <Schedule/>
+        </Col>)
+    else if(val==="ter")
+    return(
+        <Col className="Panel Primary">
+            <RightSide/>
+        </Col>)
+}
+
+function Panel({type}) {
     return (
         <>
-            {props.primary? (
-                <Col className="Panel Primary">
-                    <h1>A</h1>
-                </Col>
-            ):(
-                <Col className="Panel">
-                    <h1>B</h1>
-                </Col>
-            )}
+            {setType(type)}
         </>
     )
 }
