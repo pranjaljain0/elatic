@@ -17,7 +17,7 @@ function setType(val){
         </Col>)
     else if(val==="ter")
     return(
-        <Col className="Panel Primary">
+        <Col className="Panel min">
             <RightSide/>
         </Col>)
 }

@@ -34,6 +34,11 @@ code {
 
 .Primary{
   background-color: aliceblue;
+  max-width: 450px;
+}
+
+.min{
+  max-width: 380px;
 }
 
 .react-calendar{

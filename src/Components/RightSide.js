@@ -3,12 +3,25 @@ import Clock from 'react-digital-clock'
 import styled from 'styled-components'
 import axios from 'axios';
 
+function getWeather(data){
+    var i
+    for(i in data.weather){
+        return((data.weather)['0'])
+    }
+}
+
+function setWeather(obj){
+    if((typeof obj)=='object')
+        return(obj.main)
+}
+
+
 const Container=styled.div`
     
 `
 
 const ClockContainer=styled.div`
-    background-color:#fff;
+    background-color:aliceblue;
     margin:20px;
     padding:20px;
     border-radius:13px;
@@ -20,12 +33,24 @@ const ClockContainer=styled.div`
         font-size:200%;
     }
 `
-function getWeather(data){
-    var i
-    for(i in data.weather){
-        return((data.weather)['0'])
+
+const WeatherCard=styled.div`
+    width:200px;
+    margin:auto;
+    display:flex;
+    flex-direction:row;
+    & .city{
+        color: #9d9d9d;
     }
-}
+`
+
+const WeatherStatus=styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items:center;
+    margin:0;
+`
 
 function RightSide() {
 
@@ -46,10 +71,13 @@ function RightSide() {
         <Container>
             <ClockContainer>
                  <Clock/>
-                 {
-                     console.log(dataObj)
-                 }
-                <span>{data.name}</span>
+                    <WeatherCard>
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png"></img>
+                        <WeatherStatus>
+                            <p>{setWeather(dataObj)}</p>
+                            <p className="city">{data.name}</p>
+                        </WeatherStatus>
+                    </WeatherCard>
             </ClockContainer>
         </Container>
     )
