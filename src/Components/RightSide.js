@@ -46,6 +46,9 @@ const WeatherCard=styled.div`
     & .city{
         color: #9d9d9d;
     }
+    & img{
+        
+    }
 `
 
 const WeatherStatus=styled.div`

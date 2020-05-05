@@ -30,6 +30,10 @@ const CardSubTitle=styled.h4`
     margin:0;
 `
 
+const PinDate=styled.span`
+
+`
+
 const CardContent=styled.div`
     flex:1;
     margin:10px;
@@ -38,7 +42,9 @@ const Pill=styled.div`
     margin:0;
 
     & span{
-        background-color:${props => props.primary?'bisque':'aqua'};
+        background-color:${props => props.primary?'#EEA835':'aqua'};
+        color:#fff;
+        font-weight:800;
         padding:5px 13px;
         border-radius:50px 50px;
         font-size:70%;
@@ -52,6 +58,7 @@ function PinCard() {
             <CardContent>
                 <CardTitle>Title</CardTitle>
                 <CardSubTitle>Sub Title</CardSubTitle>
+                <PinDate>15 march 2020</PinDate>
             </CardContent>
             <Pill primary><span>Important</span></Pill>
         </Card>
