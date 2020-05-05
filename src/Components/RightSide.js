@@ -73,7 +73,7 @@ function RightSide() {
     
     useEffect(async () => {
       const result = await axios(
-        'http://api.openweathermap.org/data/2.5/weather?q=bhopal,mp,in&appid=9eb84c5b8b433ce11b70f5628710752b',
+        'https://api.openweathermap.org/data/2.5/weather?q=bhopal,mp,in&appid=9eb84c5b8b433ce11b70f5628710752b',
       );
    
       setData(result.data);

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Chart } from "react-google-charts";
-
+import Chart from 'react-google-charts'
 
 const d = new Date('2010-08-05')
 const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long', day: '2-digit' }) 
@@ -25,22 +24,22 @@ const TitleDate=styled.h1`
 
 var datajson=[
     [
-    { type: 'string', label: 'Task ID' },
-    { type: 'string', label: 'Task Name' },
-    { type: 'string', label: 'Resource' },
-    { type: 'date', label: 'Start Date' },
-    { type: 'date', label: 'End Date' },
-    { type: 'number', label: 'Duration' },
-    { type: 'number', label: 'Percent Complete' },
-    { type: 'string', label: 'Dependencies' },
+      { type: 'string', label: 'Task ID' },
+      { type: 'string', label: 'Task Name' },
+      { type: 'string', label: 'Resource' },
+      { type: 'date', label: 'Start Date' },
+      { type: 'date', label: 'End Date' },
+      { type: 'number', label: 'Duration' },
+      { type: 'number', label: 'Percent Complete' },
+      { type: 'string', label: 'Dependencies' },
     ],
-    ['toTrain','Walk to train stop','walk',null,null,5 * 60 * 1000,100,null,],
-    ['music','Listen to music','music',null,null,70 * 60 * 1000,100,null,],
-    ['wait','Wait for train','wait',null,null,10 * 60 * 1000,100,'music',],
-    ['train', 'Train ride', 'train', null, null, 45 * 60 * 1000, 75, 'wait'],
-    ['toWork','Walk to work','walk',null,null,10 * 60 * 1000,0,'train',],
-    ['work','Sit down at desk',null,null,null,2 * 60 * 1000,0,'toWork',],
-]
+    ['1','Math','Class',null,null,2*60*60*1000,100,null,],
+    ['2','English','Class',null,null,3*60*60*1000,100,'1',],
+    ['3','Prep','Personal',null,null,60*60*1000,14,'2',],
+    ['4','GRE','Personal',null,null,2*60*60*1000,86,'2',],
+    ['5','Movies','Enjoyment',null,null,60*60*1000,89,'4',],
+    ['6','Music','Enjoyment',null,null,60*60*1000,100,null,],
+  ]
 
 function Schedule() {
     return (
@@ -50,18 +49,19 @@ function Schedule() {
                 {mo+" "+da}
             </TitleDate>
             <Chart
-                width={'100%'}
-                height={'400px'}
+                className="Gchart"
                 chartType="Gantt"
-                loader={<div>Loading Chart</div>}
                 data={datajson}
+                width="100%"
+                height="50%"
+                legendToggle
                 options={{
-                    height: 275,
+                    height: 350,
                     gantt: {
-                    defaultStartDateMillis: new Date(2015, 3, 28),
+                      defaultStartDateMillis: new Date(2015, 3, 28),
                     },
-                }}
-                rootProps={{ 'data-testid': '4' }}
+                  }}
+                  rootProps={{ 'data-testid': '2' }}
                 />
         </Container>
     )

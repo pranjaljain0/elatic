@@ -26,10 +26,18 @@ const PinContainer=styled.div`
     max-height:440px;
 `
 
-const Link=styled.a`
-    color: #EEA835;
+const Link=styled.div`
+    background-color: #EEA835;
+    color: #fff;
+    font-size:200%;
     cursor:pointer;
     margin:0;
+    height:40px;
+    width:40px;
+    border-radius:50px 50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 `
 
 const CalendarContainer=styled.div`
@@ -43,7 +51,7 @@ function Pin() {
         <Container>
             <TitleContainer>
                 <Title>Weekly Pinned</Title>
-                <Link>Add new</Link>
+                <Link><span>+</span></Link>
             </TitleContainer>
             <PinContainer>
                 <PinCard/>
