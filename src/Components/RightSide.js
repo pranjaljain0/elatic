@@ -43,11 +43,15 @@ const WeatherCard=styled.div`
     margin:auto;
     display:flex;
     flex-direction:row;
+    justify-content:space-evenly;
     & .city{
         color: #9d9d9d;
     }
     & img{
-        
+        align-self: center;
+        height:50px;
+        background-color:#EEA835;
+        border-radius:50px 50px;
     }
 `
 
@@ -56,7 +60,11 @@ const WeatherStatus=styled.div`
     flex-direction:column;
     justify-content:space-evenly;
     align-items:center;
-    margin:0;
+    margin:20px 0px;
+    & p{
+        margin:0;
+        padding:0;
+    }
 `
 
 function RightSide() {

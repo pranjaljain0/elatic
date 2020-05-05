@@ -7,17 +7,17 @@ import RightSide from './RightSide'
 function setType(val){
     if(val==="pri")
     return(
-    <Col className="Panel Primary">
+    <Col className="Panel Primary" md>
         <Pin/>
     </Col>)
     else if(val==="sec")
     return(
-        <Col className="Panel">
+        <Col className="Panel" md>
             <Schedule/>
         </Col>)
     else if(val==="ter")
     return(
-        <Col className="Panel min">
+        <Col className="Panel min" md>
             <RightSide/>
         </Col>)
 }

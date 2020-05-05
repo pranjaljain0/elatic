@@ -5,11 +5,14 @@ const Card=styled.div`
     background-color:#fff;
     padding:20px;
     border-radius:13px;
-    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
-    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
-    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
     display:flex;
     margin:15px 0px;
+    transition:all 0.3s;
+    &:hover{
+        -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+        -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+        box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+    }
 `
 
 const CardIcon=styled.div`
