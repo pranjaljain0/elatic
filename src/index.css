@@ -8,7 +8,6 @@ body {
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
 }
 
 .Content{
@@ -29,11 +28,11 @@ body {
 
 .Primary{
   background-color: aliceblue;
-  max-width: 450px;
+  max-width: 420px;
 }
 
 .min{
-  max-width: 380px;
+  max-width: 300px;
 }
 
 .react-calendar{
@@ -42,6 +41,9 @@ body {
   padding: 10px;
   border-radius: 13px;
   font-family: 'Raleway', sans-serif !important;
+  -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+  -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+  box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
 }
 
 .react-calendar__tile--now{
@@ -50,5 +52,6 @@ body {
 }
 
 .Gchart{
+  font-family: 'Raleway', sans-serif !important;
   margin: 20px 0px;
 }

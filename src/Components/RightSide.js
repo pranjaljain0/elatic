@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import Clock from 'react-digital-clock'
 import styled from 'styled-components'
 import axios from 'axios';
+import { Element} from 'react-scroll'
 
 function getWeather(data){
     var i
@@ -29,9 +30,9 @@ const ClockContainer=styled.div`
     margin:20px;
     padding:20px;
     border-radius:13px;
-    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
-    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
-    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);    
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.1);
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.1);    
     & span{
         color: #000 !important;
         font-size:200%;
@@ -67,13 +68,29 @@ const WeatherStatus=styled.div`
     }
 `
 
-function RightSide() {
+const Notes=styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin:20px 10px;
+    padding:20px;
+`
+
+const NoteCard=styled.div`
+    background-color:#EEA835;
+    color: #fff;
+    padding:10px;
+    margin:5px 0px;
+    border-radius:13px;
+`
+
+function RightSide({fetched_data}) {
 
     const [data, setData] = useState({});
     
     useEffect(async () => {
       const result = await axios(
-        'https://api.openweathermap.org/data/2.5/weather?q=bhopal,mp,in&appid=9eb84c5b8b433ce11b70f5628710752b',
+        'https://api.openweathermap.org/data/2.5/weather?q='+fetched_data[0].city+','+fetched_data[0].state+','+fetched_data[0].country+'&appid=9eb84c5b8b433ce11b70f5628710752b',
       );
    
       setData(result.data);
@@ -94,6 +111,25 @@ function RightSide() {
                         </WeatherStatus>
                     </WeatherCard>
             </ClockContainer>
+
+            <Notes>
+            <Element name="test7" className="element" id="containerElement" style={{
+            position: 'relative',
+            height: '400px',
+            overflow: 'scroll',
+            marginBottom: '100px'
+          }}>
+                {
+                    fetched_data['0'].notes.map((item,index)=>(
+                        <Element name="firstInsideContainer" key={index}>
+                            <NoteCard>
+                                <p>{item}</p>
+                            </NoteCard>
+                        </Element>
+                            ))
+                }
+          </Element>
+            </Notes>
         </Container>
     )
 }

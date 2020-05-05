@@ -1,31 +1,31 @@
 import React from 'react'
-import {Row,Col} from 'react-bootstrap'
+import {Col} from 'react-bootstrap'
 import Pin from './Pin'
 import Schedule from './Schedule'
 import RightSide from './RightSide'
 
-function setType(val){
+function setType(val,fetched_data){
     if(val==="pri")
     return(
-    <Col className="Panel Primary" md>
-        <Pin/>
-    </Col>)
+        <Col className="Panel Primary" md={12}>
+            <Pin fetched_data={fetched_data}/>
+        </Col>)
     else if(val==="sec")
     return(
-        <Col className="Panel" md>
-            <Schedule/>
+        <Col className="Panel" md={12}>
+            <Schedule fetched_data={fetched_data}/>
         </Col>)
     else if(val==="ter")
     return(
-        <Col className="Panel min" md>
-            <RightSide/>
+        <Col className="Panel min" md={12}>
+            <RightSide fetched_data={fetched_data}/>
         </Col>)
 }
 
-function Panel({type}) {
+function Panel({type,fetched_data}) {
     return (
         <>
-            {setType(type)}
+            {setType(type,fetched_data)}
         </>
     )
 }

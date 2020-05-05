@@ -12,6 +12,8 @@ const Container=styled.div`
     justify-content:space-between;
     align-items:center;
     padding:0 20px 0 0;
+    position:fixed;
+    width:100%;
 `
 const Title=styled.h1`
     margin:0;
@@ -22,16 +24,17 @@ const Title=styled.h1`
 const UserNameTitle=styled.h3`
     color: #3d3d3d;
     cursor:pointer;
+    margin-right:20px;
 `
 
-function Navigation() {
+function Navigation({fetched_data}) {
     return (
         <Container>
             <Title>
                 ELATIC
             </Title>
             <UserNameTitle>
-                John Doe
+                {fetched_data['0'].first_name}{' '}{fetched_data['0'].last_name}
             </UserNameTitle>
         </Container>
     )

@@ -54,16 +54,16 @@ const Pill=styled.div`
     }
 `
 
-function PinCard() {
+function PinCard({item}) {
     return (
         <Card>
             <CardIcon/>
             <CardContent>
-                <CardTitle>Title</CardTitle>
-                <CardSubTitle>Sub Title</CardSubTitle>
-                <PinDate>15 march 2020</PinDate>
+                <CardTitle>{item.title}</CardTitle>
+                <CardSubTitle>{item.description}</CardSubTitle>
+                <PinDate>{item.date_added}</PinDate>
             </CardContent>
-            <Pill primary><span>Important</span></Pill>
+            <Pill primary><span>{item.tag}</span></Pill>
         </Card>
     )
 }

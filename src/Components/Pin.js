@@ -3,18 +3,19 @@ import styled from 'styled-components'
 import PinCard from './PinCard'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
+import { Element} from 'react-scroll'
 
 const Container=styled.div`
     display:flex;
     flex-direction:column;
-    padding:30px;
     height:100%;
 `
 
 const TitleContainer=styled.div`
     display:flex;
     justify-content:space-between;
-    align-items:center;  
+    align-items:center;
+    padding:10px 30px;
 `
 
 const Title=styled.h3`
@@ -23,7 +24,8 @@ const Title=styled.h3`
 `
 const PinContainer=styled.div`
     flex:1;
-    max-height:440px;
+    max-height:430px;
+    padding:0px 30px;
 `
 
 const Link=styled.div`
@@ -44,9 +46,10 @@ const CalendarContainer=styled.div`
     display:flex;
     width:100%;
     justify-content:center;
+    align-self:flex-end;
 `
 
-function Pin() {
+function Pin({fetched_data}) {
     return (
         <Container>
             <TitleContainer>
@@ -54,9 +57,18 @@ function Pin() {
                 <Link><span>+</span></Link>
             </TitleContainer>
             <PinContainer>
-                <PinCard/>
-                <PinCard/>
-                <PinCard/>
+            <Element name="test7" className="element" id="containerElement" style={{
+            position: 'relative',
+            height: '400px',
+            overflow: 'scroll',
+            marginBottom: '100px'
+          }}>
+                {(fetched_data[0].weekly_pin).map((item,index)=>(
+                    <Element name="firstInsideContainer" key={index}>
+                        <PinCard item={item} />
+                    </Element>
+                ))}
+            </Element>
             </PinContainer>
             <CalendarContainer>
                 <Calendar />

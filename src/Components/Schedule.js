@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Chart from 'react-google-charts'
+import NewGanttEntry from './NewGanttEntry'
 
-const d = new Date('2010-08-05')
+const d = new Date()
 const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long', day: '2-digit' }) 
 const [{ value: mo },,{ value: da },,{ value: ye }] = dtf.formatToParts(d)
 
@@ -22,6 +23,35 @@ const TitleDate=styled.h1`
     font-weight:bold;
 `
 
+const ScheduleHeader=styled.div`
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+`
+
+const HeaderLeft=styled.div`
+
+`
+
+const HeaderRight=styled.div`
+
+`
+
+const Link=styled.div`
+    background-color: #EEA835;
+    color: #fff;
+    font-size:200%;
+    cursor:pointer;
+    margin:0;
+    height:40px;
+    width:40px;
+    border-radius:50px 50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`
+
 var datajson=[
     [
       { type: 'string', label: 'Task ID' },
@@ -33,37 +63,40 @@ var datajson=[
       { type: 'number', label: 'Percent Complete' },
       { type: 'string', label: 'Dependencies' },
     ],
-    ['1','Math','Class',null,null,2*60*60*1000,100,null,],
-    ['2','English','Class',null,null,3*60*60*1000,100,'1',],
-    ['3','Prep','Personal',null,null,60*60*1000,14,'2',],
-    ['4','GRE','Personal',null,null,2*60*60*1000,86,'2',],
-    ['5','Movies','Enjoyment',null,null,60*60*1000,89,'4',],
-    ['6','Music','Enjoyment',null,null,60*60*1000,100,null,],
   ]
 
-function Schedule() {
+function Schedule({fetched_data}) {
+  const [GanttEntry, setGanttEntry] = useState(false);
     return (
+      <>
         <Container>
+          <ScheduleHeader>
+            <HeaderLeft>
             <Title>Today's schedule</Title>
             <TitleDate>
-                {mo+" "+da}
+                {mo+" "+da+", "+ye}
             </TitleDate>
+            </HeaderLeft>
+            <HeaderRight>
+              <Link onClick={() => setGanttEntry(true)}><span>+</span></Link>
+            </HeaderRight>
+            </ScheduleHeader>
             <Chart
                 className="Gchart"
                 chartType="Gantt"
-                data={datajson}
+                data={datajson.concat(fetched_data[0].gantt)}
                 width="100%"
-                height="50%"
+                height="400px"
                 legendToggle
                 options={{
-                    height: 350,
                     gantt: {
-                      defaultStartDateMillis: new Date(2015, 3, 28),
                     },
                   }}
-                  rootProps={{ 'data-testid': '2' }}
+                  rootProps={{ 'data-testid': '6' }}
                 />
         </Container>
+        <NewGanttEntry GanttEntry={GanttEntry} setGanttEntry={setGanttEntry}/>
+        </>
     )
 }
 
