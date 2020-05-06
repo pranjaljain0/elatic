@@ -52,9 +52,9 @@ function RemoveGanttModal({RemoveGantt,setRemoveGantt,GanttData,GanttHandler}) {
         aria-labelledby="example-modal-sizes-title-lg"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">
-          Large Modal
-          </Modal.Title>
+            <Modal.Title id="example-modal-sizes-title-lg">
+            Edit Tasks
+            </Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Table striped bordered hover>

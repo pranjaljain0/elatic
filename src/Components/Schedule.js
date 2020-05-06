@@ -72,6 +72,23 @@ const DeleteButton=styled.div`
     }
 `
 
+const NoteEditIcon=styled.div`
+    background-color:#e5e5e5;
+    color: #fff;
+    font-size:150%;
+    cursor:pointer;
+    margin:0 5px;
+    height:40px;
+    width:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50px 50px;
+    & svg{
+        cursor:pointer;
+    }
+`
+
 var datajson=[
     [
       { type: 'string', label: 'Task ID' },
@@ -128,7 +145,7 @@ function Schedule({fetched_data}) {
             </HeaderLeft>
             <HeaderRight>
               <Link onClick={() => setGanttEntry(true)}><MdAdd size={24}/></Link>
-              <DeleteButton onClick={() => setRemoveGantt(true)}><GrSubtract size={24}/></DeleteButton>
+              <NoteEditIcon onClick={() => setRemoveGantt(true)}><MdEdit size={24}/></NoteEditIcon>
             </HeaderRight>
             </ScheduleHeader>
             <Chart
