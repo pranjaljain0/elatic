@@ -29,28 +29,28 @@ var fetched_data=[{
     ],
     "weekly_pin": [
       {
-        "pin_id": "5eb18958dfe45dbb80559eb5",
+        "pin_id": "1",
         "title": "mollit consequat",
         "description": "pariatur anim adipisicing aliquip",
         "tag": "culpa",
         "date_added": "1/1/2020"
       },
       {
-        "pin_id": "5eb18958a216f9a718a3d275",
+        "pin_id": "2",
         "title": "pariatur elit",
         "description": "est eu aute dolor",
         "tag": "consectetur",
         "date_added": "1/1/2020"
       },
       {
-        "pin_id": "5eb18958a216f9a718a3d275",
+        "pin_id": "3",
         "title": "pariatur elit",
         "description": "est eu aute dolor",
         "tag": "consectetur",
         "date_added": "1/1/2020"
       },
       {
-        "pin_id": "5eb18958a216f9a718a3d275",
+        "pin_id": "4",
         "title": "pariatur elit",
         "description": "est eu aute dolor",
         "tag": "consectetur",

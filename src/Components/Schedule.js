@@ -35,7 +35,7 @@ const HeaderLeft=styled.div`
 `
 
 const HeaderRight=styled.div`
-
+  display:flex;
 `
 
 const Link=styled.div`
@@ -43,7 +43,21 @@ const Link=styled.div`
     color: #fff;
     font-size:200%;
     cursor:pointer;
-    margin:0;
+    margin:0 5px;
+    height:40px;
+    width:40px;
+    border-radius:50px 50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`
+
+const DeleteButton=styled.div`
+    background-color: #FF5B44;
+    color: #fff;
+    font-size:150%;
+    cursor:pointer;
+    margin:0 5px;
     height:40px;
     width:40px;
     border-radius:50px 50px;
@@ -79,6 +93,7 @@ function Schedule({fetched_data}) {
             </HeaderLeft>
             <HeaderRight>
               <Link onClick={() => setGanttEntry(true)}><span>+</span></Link>
+              <DeleteButton><span>-</span></DeleteButton>
             </HeaderRight>
             </ScheduleHeader>
             <Chart

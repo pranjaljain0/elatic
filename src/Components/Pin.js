@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import PinCard from './PinCard'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import { Element} from 'react-scroll'
+import NewPinEntry from './NewPinEntry'
 
 const Container=styled.div`
     display:flex;
@@ -50,11 +51,31 @@ const CalendarContainer=styled.div`
 `
 
 function Pin({fetched_data}) {
+
+    const [ModalShow, setModalShow] = useState(false)
+    const [PinData, setPinData] = useState(fetched_data[0].weekly_pin)
+    
+    const PinHandler=(key)=>{
+        setPinData((prevPins)=>{
+            return prevPins.filter(Pins=> Pins.pin_id!=key)
+        })
+    }
+
+    const AddPinHandler=(data)=>{
+        setPinData((prevPins)=>{
+            return [
+                {data},
+                ...prevPins
+            ]
+        })
+    }
+
     return (
+        <>
         <Container>
             <TitleContainer>
                 <Title>Weekly Pinned</Title>
-                <Link><span>+</span></Link>
+                <Link onClick={()=>setModalShow(true)}><span>+</span></Link>
             </TitleContainer>
             <PinContainer>
             <Element name="test7" className="element" id="containerElement" style={{
@@ -63,9 +84,9 @@ function Pin({fetched_data}) {
             overflow: 'scroll',
             marginBottom: '100px'
           }}>
-                {(fetched_data[0].weekly_pin).map((item,index)=>(
+                {PinData.map((item,index)=>(
                     <Element name="firstInsideContainer" key={index}>
-                        <PinCard item={item} />
+                        <PinCard item={item} index={index} PinHandler={PinHandler}/>
                     </Element>
                 ))}
             </Element>
@@ -74,6 +95,8 @@ function Pin({fetched_data}) {
                 <Calendar />
             </CalendarContainer>
         </Container>
+        <NewPinEntry ModalShow={ModalShow}  setModalShow={setModalShow}/>
+        </>
     )
 }
 

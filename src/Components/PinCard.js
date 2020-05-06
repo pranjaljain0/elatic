@@ -42,7 +42,7 @@ const CardContent=styled.div`
     margin:10px;
 `
 const Pill=styled.div`
-    margin:0;
+    margin:10px 0px;
 
     & span{
         background-color:${props => props.primary?'#EEA835':'aqua'};
@@ -54,7 +54,21 @@ const Pill=styled.div`
     }
 `
 
-function PinCard({item}) {
+const DeleteButton=styled.div`
+    background-color: #FF5B44;
+    color: #fff;
+    font-size:100%;
+    cursor:pointer;
+    margin:0;
+    height:30px;
+    width:30px;
+    border-radius:50px 50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`
+
+function PinCard({item,index,PinHandler}) {
     return (
         <Card>
             <CardIcon/>
@@ -62,8 +76,9 @@ function PinCard({item}) {
                 <CardTitle>{item.title}</CardTitle>
                 <CardSubTitle>{item.description}</CardSubTitle>
                 <PinDate>{item.date_added}</PinDate>
+                <Pill primary><span>{item.tag}</span></Pill>
             </CardContent>
-            <Pill primary><span>{item.tag}</span></Pill>
+            <DeleteButton onClick={()=>{PinHandler(item.pin_id)}}><span>x</span></DeleteButton>
         </Card>
     )
 }

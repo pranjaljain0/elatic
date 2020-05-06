@@ -18,21 +18,20 @@ const customStyles = {
       },
   };
 
-function NewGanttEntry({GanttEntry,setGanttEntry}) {
-    
+function NewPinEntry({ModalShow,setModalShow}) {
     return (
         <Modal
-          isOpen={GanttEntry}
-          style={customStyles}
-          onRequestClose={()=>{setGanttEntry(false)}}
-          contentLabel="Gantt Model">
- 
-          <h2>Hello</h2>
-          <div>I am a modal</div>
-          <form>
-          </form>
-        </Modal>
+        isOpen={ModalShow}
+        style={customStyles}
+        onRequestClose={()=>{setModalShow(false)}}
+        contentLabel="Pin Model">
+
+        <h2>Hello</h2>
+        <div>I am a modal</div>
+        <form>
+        </form>
+      </Modal>
     )
 }
 
-export default NewGanttEntry
+export default NewPinEntry
