@@ -19,13 +19,7 @@ var fetched_data=[{
     "state": 'mp',
     "country": 'in',
     "notes": [
-      "quis duis commodo consectetur reprehenderit velit magna id ullamco pariatur",
-      "deserunt duis ex labore excepteur irure excepteur officia elit veniam",
-      "non duis consectetur duis nisi et mollit nulla sunt voluptate",
-      "fugiat ut nulla deserunt officia anim tempor nulla id sunt",
-      "elit in mollit non irure tempor magna voluptate aliquip fugiat",
-      "excepteur voluptate id deserunt qui excepteur cupidatat aliquip ipsum ex",
-      "ipsum voluptate non irure proident eiusmod qui ullamco cupidatat Lorem"
+      {"note_id": "1","note":"quis duis commodo consectetur reprehenderit velit magna id ullamco pariatur",},
     ],
     "weekly_pin": [
       {
@@ -35,27 +29,6 @@ var fetched_data=[{
         "tag": "culpa",
         "date_added": "1/1/2020"
       },
-      {
-        "pin_id": "2",
-        "title": "pariatur elit",
-        "description": "est eu aute dolor",
-        "tag": "consectetur",
-        "date_added": "1/1/2020"
-      },
-      {
-        "pin_id": "3",
-        "title": "pariatur elit",
-        "description": "est eu aute dolor",
-        "tag": "consectetur",
-        "date_added": "1/1/2020"
-      },
-      {
-        "pin_id": "4",
-        "title": "pariatur elit",
-        "description": "est eu aute dolor",
-        "tag": "consectetur",
-        "date_added": "1/1/2020"
-      }
     ],
     "gantt": [
       ['0','Day','Day',null,null,24*60*60*1000,0,null,],
