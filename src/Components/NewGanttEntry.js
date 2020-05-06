@@ -134,7 +134,7 @@ function NewGanttEntry({GanttEntry,setGanttEntry,GanttData,AddGanttHandler}) {
     const [startDate, setStartDate] = useState(new Date()); //done
     const [EndDate, setEndDate] = useState(new Date()); //done
     const [Duration, setDuration] = useState(null) //done
-    const [PercentComplete, setPercentComplete] = useState(null) //done
+    const [PercentComplete, setPercentComplete] = useState(0) //done
     const [Dependencies, setDependencies] = useState(null) //done
 
     return (
@@ -195,7 +195,7 @@ function NewGanttEntry({GanttEntry,setGanttEntry,GanttData,AddGanttHandler}) {
               </select> */}
               {/* [TaskID,TaskName,Resource,startDate,EndDate,Duration,PercentComplete,Dependencies] */}
             <Button type="button" onClick={()=>{
-              AddGanttHandler([getMaxId(GanttData)+1,TaskName,Resource,startDate,EndDate,Duration,PercentComplete,Dependencies])
+              AddGanttHandler([(getMaxId(GanttData)+1).toString(),TaskName,Resource,startDate,EndDate,Duration,PercentComplete,Dependencies])
               }} value='Add Task'/>
           </InputArea>
         </form>

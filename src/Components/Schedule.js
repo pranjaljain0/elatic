@@ -142,7 +142,7 @@ function Schedule({fetched_data}) {
                 />
         </Container>
         <NewGanttEntry GanttEntry={GanttEntry} setGanttEntry={setGanttEntry} GanttData={GanttData} AddGanttHandler={AddGanttHandler}/>
-        <RemoveGanttModal RemoveGantt={RemoveGantt} setRemoveGantt={setRemoveGantt}/>
+        <RemoveGanttModal RemoveGantt={RemoveGantt} setRemoveGantt={setRemoveGantt} GanttData={GanttData} GanttHandler={GanttHandler}/>
         </>
     )
 }
