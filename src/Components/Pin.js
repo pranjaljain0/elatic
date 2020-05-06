@@ -5,6 +5,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import { Element} from 'react-scroll'
 import NewPinEntry from './NewPinEntry'
+import {MdEdit,MdAdd} from 'react-icons/md'
 
 const Container=styled.div`
     display:flex;
@@ -25,7 +26,7 @@ const Title=styled.h3`
 `
 const PinContainer=styled.div`
     flex:1;
-    max-height:430px;
+    max-height:370px;
     padding:0px 30px;
 `
 
@@ -44,10 +45,10 @@ const Link=styled.div`
 `
 
 const CalendarContainer=styled.div`
+    flex:1;
     display:flex;
-    width:100%;
     justify-content:center;
-    align-self:flex-end;
+    align-items:center;
 `
 
 function Pin({fetched_data}) {
@@ -75,7 +76,7 @@ function Pin({fetched_data}) {
         <Container>
             <TitleContainer>
                 <Title>Weekly Pinned</Title>
-                <Link onClick={()=>setModalShow(true)}><span>+</span></Link>
+                <Link onClick={()=>setModalShow(true)}><MdAdd size={24}/></Link>
             </TitleContainer>
             <PinContainer>
             <Element name="test7" className="element" id="containerElement" style={{

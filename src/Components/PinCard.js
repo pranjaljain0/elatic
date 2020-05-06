@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Card=styled.div`
     background-color:#fff;
-    padding:20px;
+    padding:0px;
     border-radius:13px;
     display:flex;
-    margin:15px 0px;
+    margin:0px;
     transition:all 0.3s;
     &:hover{
         -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
@@ -15,35 +16,39 @@ const Card=styled.div`
     }
 `
 
-const CardIcon=styled.div`
-    margin:15px 0px;
+const CardIcon=styled.div`    
     background-color:#EEA835;
-    height:25px;
-    width:25px;
+    height:15px;
+    width:15px;
     border-radius:50px 50px;
+    margin:15px 5px;
 `
 
-const CardTitle=styled.h3`
+const CardTitle=styled.h4`
     color: #3d3d3d;
-    margin:0;
+    margin:5px;
+    padding:0;
+    text-transform:capitalize;
 `
 
-const CardSubTitle=styled.h4`
+const CardSubTitle=styled.p`
     color: #3d3d3d;
-    margin:0;
+    margin:5px;
 `
 
-const PinDate=styled.span`
-
+const PinDate=styled.p`
+    font-size:80%;
+    color: #6E7271;
+    margin:5px;
+    padding:0;
 `
 
 const CardContent=styled.div`
     flex:1;
-    margin:10px;
+    margin:5px;
 `
 const Pill=styled.div`
-    margin:10px 0px;
-
+    margin:5px;
     & span{
         background-color:${props => props.primary?'#EEA835':'aqua'};
         color:#fff;
@@ -59,13 +64,14 @@ const DeleteButton=styled.div`
     color: #fff;
     font-size:100%;
     cursor:pointer;
-    margin:0;
-    height:30px;
-    width:30px;
+    margin:10px 10px;
+    height:25px;
+    width:25px;
     border-radius:50px 50px;
     display:flex;
     justify-content:center;
     align-items:center;
+    text-align:center;
 `
 
 function PinCard({item,index,PinHandler}) {
@@ -78,7 +84,7 @@ function PinCard({item,index,PinHandler}) {
                 <PinDate>{item.date_added}</PinDate>
                 <Pill primary><span>{item.tag}</span></Pill>
             </CardContent>
-            <DeleteButton onClick={()=>{PinHandler(item.pin_id)}}><span>x</span></DeleteButton>
+            <DeleteButton onClick={()=>{PinHandler(item.pin_id)}}><RiDeleteBin6Line/></DeleteButton>
         </Card>
     )
 }

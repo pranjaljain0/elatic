@@ -3,12 +3,20 @@ import Navigation from '../Components/Navigation'
 import Panel from '../Components/Panel'
 import {Row} from 'react-bootstrap'
 import styled from 'styled-components'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Container=styled.div`
     height: 100%;
     display:flex;
     flex-direction:column;
 `
+
+var day = new Date();
+day.setHours(2,0,0,0);
+
+var nextDay = new Date(day); 
+nextDay.setHours(3,30,0,0);
+
 var fetched_data=[{
     "_id": "5eb189581f4f361f05ce82c4",
     "first_name": 'Pranjal',
@@ -31,10 +39,7 @@ var fetched_data=[{
       },
     ],
     "gantt": [
-      ['0','Day','Day',null,null,24*60*60*1000,0,null,],
-      ['1','Math','Class',null,null,2*60*60*1000,0,null,],
-      ['2','English','Class',null,null,3*60*60*1000,0,'1',],
-      ['3','Prep','Personal',null,null,60*60*1000,0,'2',],
+      ['1','Math','Class',day,nextDay,null,0,null,],
       
     ]
 }]

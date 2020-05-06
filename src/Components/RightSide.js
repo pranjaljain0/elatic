@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import axios from 'axios';
 import { Element} from 'react-scroll'
 import { RiDeleteBin6Line } from "react-icons/ri";
-import {MdEdit} from 'react-icons/md'
+import {MdEdit,MdAdd} from 'react-icons/md'
 import NewNoteEntry from './NewNoteEntry';
 
 
@@ -76,6 +76,7 @@ const Notes=styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
+    
 `
 
 const NoteCard=styled.div`
@@ -86,11 +87,15 @@ const NoteCard=styled.div`
     border-radius:13px;
     display:flex;
     flex-shrink:1;
+    &:hover{
+        -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+        -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+        box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+    }
 `
 
 const NoteText=styled.div`
     flex:1;
-    text-align:justify;
     & p{
         margin:0;
         padding:0;
@@ -101,8 +106,8 @@ const NoteDelIcon=styled.div`
     
     & svg{
         background-color:#3d3d3d;
-        padding:10px 10px;
-        margin:0px 5px;
+        margin:5px;
+        padding:5px;
         border-radius:50px 50px;
         cursor:pointer;
     }
@@ -112,8 +117,8 @@ const NoteEditIcon=styled.div`
     
     & svg{
         background-color:#e5e5e5;
-        padding:10px 10px;
-        margin:0px 5px;
+        padding:5px;
+        margin:5px;
         border-radius:50px 50px;
         cursor:pointer;
     }
@@ -161,13 +166,15 @@ function RightSide({fetched_data}) {
         })
     }
 
-    const AddPinHandler=(data)=>{
-        setNoteData((prevPins)=>{
+    const AddNoteHandler=(data)=>{        
+        setNoteData((prevNotes)=>{
             return [
-                {data},
-                ...prevPins
+                {note_id:(Math.floor(Math.random() * 1001)).toString(),note:data},
+                ...prevNotes
             ]
         })
+        console.log(NoteData)
+        setModalShow(false)
     }
 
 
@@ -199,7 +206,7 @@ function RightSide({fetched_data}) {
             <Notes>
                 <NotesHeader>
                     <NotesTitle>Notes</NotesTitle>
-                    <Link onClick={()=>setModalShow(true)}><span>+</span></Link>
+                    <Link onClick={()=>setModalShow(true)}><MdAdd size={24}/></Link>
                 </NotesHeader>
             <Element name="test7" className="element" id="containerElement" style={{
             position: 'relative',
@@ -216,10 +223,10 @@ function RightSide({fetched_data}) {
                                 </NoteText>
                                 <NoteIcons>
                                     <NoteEditIcon>
-                                        <MdEdit/>
+                                        <MdEdit size={24}/>
                                     </NoteEditIcon>
                                     <NoteDelIcon>
-                                        <RiDeleteBin6Line size={14} onClick={()=>NoteHandler(item.note_id)}/>
+                                        <RiDeleteBin6Line size={24} onClick={()=>NoteHandler(item.note_id)}/>
                                     </NoteDelIcon>
                                 </NoteIcons>
                             </NoteCard>
@@ -229,7 +236,7 @@ function RightSide({fetched_data}) {
           </Element>
             </Notes>
         </Container>
-        <NewNoteEntry ModalShow={ModalShow} setModalShow={setModalShow}/>
+        <NewNoteEntry ModalShow={ModalShow} setModalShow={setModalShow} AddNoteHandler={AddNoteHandler}/>
         </>
     )
 }

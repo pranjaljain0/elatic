@@ -1,24 +1,22 @@
 /* PRIMARY #EEA835 */
 /* GRAY #EAEEF0 */
 /* WHITE #EAEEF0 */
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 
 body {
   margin: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .Content{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   position: absolute;
   left: 0;
   right: 0;
   top: 60px;
-  height: calc(100% - 60px);
+  height: 100%;
 }
 
 .Panel{
@@ -28,7 +26,10 @@ body {
 
 .Primary{
   background-color: aliceblue;
-  max-width: 420px;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  justify-content: center;
 }
 
 .min{
@@ -40,10 +41,11 @@ body {
   border: 0px solid #fff !important;
   padding: 10px;
   border-radius: 13px;
-  font-family: 'Raleway', sans-serif !important;
   -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
   -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
   box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.08);
+  line-height: 0.2em !important;
+  width: 300px !important;
 }
 
 .react-calendar__tile--now{
@@ -58,6 +60,5 @@ body {
 
 @media only screen and (max-width: 768px) {
   .Content{
-    flex-direction: column;
-  }
+display: grid;  }
 }

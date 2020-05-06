@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Chart from 'react-google-charts'
 import NewGanttEntry from './NewGanttEntry'
+import {MdEdit,MdAdd} from 'react-icons/md'
+import {GrSubtract} from "react-icons/gr";
+import RemoveGanttModal from './RemoveGantt'
 
 const d = new Date()
 const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long', day: '2-digit' }) 
@@ -64,6 +67,9 @@ const DeleteButton=styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+    & svg{
+      fill: #fff;
+    }
 `
 
 var datajson=[
@@ -79,8 +85,37 @@ var datajson=[
     ],
   ]
 
+  var day = new Date();
+  day.setHours(0,0,0,0);
+  
+  var nextDay = new Date(day); 
+  nextDay.setHours(24,0,0,0);
+
+  // var datevar=['0','Day','Day',Date.parse((new Date().toDateString())+" 00:00:00 GMT+0530 (IST)"),Date.parse((new Date().toDateString())+" 23:59:59 GMT+0530 (IST)"),null,0,null,]
+  var datevar=['0','Today','Today',day,nextDay,null,0,null,]
+
 function Schedule({fetched_data}) {
   const [GanttEntry, setGanttEntry] = useState(false);
+  const [GanttData, setGanttData] = useState(fetched_data[0].gantt)
+  const [RemoveGantt, setRemoveGantt] = useState(false);
+
+  const GanttHandler=(key)=>{
+        GanttData((prevData)=>{
+            return prevData.filter(prevData=> prevData[0]!=key)
+        })
+    }
+
+    const AddGanttHandler=(data)=>{
+        setGanttData((prevData)=>{
+            return [
+                ...prevData,
+                [...data],
+            ]
+        })
+        setGanttEntry(false)
+        console.log(GanttData)
+    }
+
     return (
       <>
         <Container>
@@ -92,25 +127,22 @@ function Schedule({fetched_data}) {
             </TitleDate>
             </HeaderLeft>
             <HeaderRight>
-              <Link onClick={() => setGanttEntry(true)}><span>+</span></Link>
-              <DeleteButton><span>-</span></DeleteButton>
+              <Link onClick={() => setGanttEntry(true)}><MdAdd size={24}/></Link>
+              <DeleteButton onClick={() => setRemoveGantt(true)}><GrSubtract size={24}/></DeleteButton>
             </HeaderRight>
             </ScheduleHeader>
             <Chart
                 className="Gchart"
                 chartType="Gantt"
-                data={datajson.concat(fetched_data[0].gantt)}
+                data={datajson.concat([datevar,...GanttData])}
                 width="100%"
-                height="400px"
+                height="600px"
                 legendToggle
-                options={{
-                    gantt: {
-                    },
-                  }}
-                  rootProps={{ 'data-testid': '6' }}
+                Props={{ 'data-testid': '6' }}
                 />
         </Container>
-        <NewGanttEntry GanttEntry={GanttEntry} setGanttEntry={setGanttEntry}/>
+        <NewGanttEntry GanttEntry={GanttEntry} setGanttEntry={setGanttEntry} GanttData={GanttData} AddGanttHandler={AddGanttHandler}/>
+        <RemoveGanttModal RemoveGantt={RemoveGantt} setRemoveGantt={setRemoveGantt}/>
         </>
     )
 }
