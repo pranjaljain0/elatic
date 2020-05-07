@@ -5,26 +5,6 @@ import DatePicker from 'react-datepicker'
 
 import "react-datepicker/dist/react-datepicker.css";
 
-
-const customStyles = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    transition:'all 0.5s',
-    borderRadius:'13px',
-    padding:'20px',
-    width:'600px',
-    height:'500px'
-  },
-  overlay: {
-      backgroundColor: 'rgba(0,0,0,0.8)'
-    },
-};
-
 const InputArea=styled.div`
   display:flex;
   flex-direction:column;
@@ -97,26 +77,13 @@ function NewGanttEntry({GanttEntry,setGanttEntry,GanttData,AddGanttHandler}) {
     const [NewGanttData, setNewGanttData] = useState([])
     const [Selected, setSelected] = useState()
 
-    var ID=[];
-    var maxID;
     const getResourceArray=(data)=>{
       var arr=[]
       data.forEach(element => {
-        ID.push(element[0])
         arr.push(element[2])
       });
       let unique = [...new Set(arr)];
-      maxID=Math.max(...ID);
       return ["Select one","Add new",...unique,]
-    }
-
-    const getDependenciesArray=(data)=>{
-      var arr=[]
-      data.forEach(element => {
-        arr.push(element[2])
-      });
-      let unique = [...new Set(arr)];
-      return [,"None",...unique]
     }
 
     const getMaxId=(data)=>{
@@ -128,7 +95,6 @@ function NewGanttEntry({GanttEntry,setGanttEntry,GanttData,AddGanttHandler}) {
       return genID
     }
 
-    const [TaskID, setTaskID] = useState(null) //done
     const [TaskName, setTaskName] = useState('') //done
     const [Resource, setResource] = useState(null)
     const [startDate, setStartDate] = useState(new Date()); //done
@@ -149,8 +115,6 @@ function NewGanttEntry({GanttEntry,setGanttEntry,GanttData,AddGanttHandler}) {
         <form>
           <InputArea>
           <Label>Title<Text placeholder="Title" type='text' onChange={(e)=>{setTaskName(e.target.value)}}/></Label>
-            
-            {/* <select onChange={(e)=>{e!='Add new'?setResource(e.target.value):setSelected(0)}}> */}
             <Label>Group
               <select onChange={(e)=>{
               if(e.target.value!='Add new'){
@@ -188,12 +152,6 @@ function NewGanttEntry({GanttEntry,setGanttEntry,GanttData,AddGanttHandler}) {
                 dateFormat="MMMM d, yyyy h:mm aa"
               />
               </DateSelector>
-              {/* <select onChange={(e)=>{e!='None'?setDependencies(e.target.value):setDependencies(null)}}>
-                {
-                  getDependenciesArray(GanttData).map((item,index)=>(<option value={item}>{item}</option>))
-                }
-              </select> */}
-              {/* [TaskID,TaskName,Resource,startDate,EndDate,Duration,PercentComplete,Dependencies] */}
             <Button type="button" onClick={()=>{
               AddGanttHandler([(getMaxId(GanttData)+1).toString(),TaskName,Resource,startDate,EndDate,Duration,PercentComplete,Dependencies])
               }} value='Add Task'/>

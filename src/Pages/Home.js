@@ -3,7 +3,6 @@ import Navigation from '../Components/Navigation'
 import Panel from '../Components/Panel'
 import {Row} from 'react-bootstrap'
 import styled from 'styled-components'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Container=styled.div`
     height: 100%;
@@ -27,19 +26,13 @@ var fetched_data=[{
     "state": 'mp',
     "country": 'in',
     "notes": [
-      {"note_id": "1","note":"quis duis commodo consectetur reprehenderit velit magna id ullamco pariatur",},
+      
     ],
     "weekly_pin": [
-      {
-        "pin_id": "1",
-        "title": "mollit consequat",
-        "description": "pariatur anim adipisicing aliquip",
-        "tag": "culpa",
-        "date_added": "1/1/2020"
-      },
+      
     ],
     "gantt": [
-      ['1','Math','Class',day,nextDay,null,0,null,],
+     
       
     ]
 }]

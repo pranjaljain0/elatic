@@ -117,9 +117,10 @@ function Schedule({fetched_data}) {
   const [RemoveGantt, setRemoveGantt] = useState(false);
 
   const GanttHandler=(key)=>{
-        GanttData((prevData)=>{
+        setGanttData((prevData)=>{
             return prevData.filter(prevData=> prevData[0]!=key)
         })
+        setGanttEntry(false)
     }
 
     const AddGanttHandler=(data)=>{
@@ -130,7 +131,6 @@ function Schedule({fetched_data}) {
             ]
         })
         setGanttEntry(false)
-        console.log(GanttData)
     }
 
     return (

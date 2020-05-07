@@ -13,6 +13,9 @@ const Container=styled.div`
     align-items:center;
     padding:0 20px 0 0;
     position:fixed;
+    top:0;
+    left:0;
+    right:0;
     width:100%;
 `
 const Title=styled.h1`

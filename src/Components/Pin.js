@@ -17,12 +17,12 @@ const TitleContainer=styled.div`
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:10px 30px;
 `
 
 const Title=styled.h3`
     color:#3d3d3d;
     margin:0;
+    padding:0 !important;
 `
 const PinContainer=styled.div`
     flex:1;
@@ -96,7 +96,7 @@ function Pin({fetched_data}) {
                 <Calendar />
             </CalendarContainer>
         </Container>
-        <NewPinEntry ModalShow={ModalShow}  setModalShow={setModalShow}/>
+        <NewPinEntry ModalShow={ModalShow}  setModalShow={setModalShow} AddPinHandler={AddPinHandler}/>
         </>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Modal,Table} from 'react-bootstrap';
 import styled from 'styled-components'
+import {GrSubtract} from "react-icons/gr";
 
 const Label=styled.label`
   margin:10px;
@@ -35,6 +36,23 @@ const Button = styled.input`
   }
   `
 
+const DeleteButton=styled.div`
+    background-color: #FF5B44;
+    color: #fff;
+    font-size:150%;
+    cursor:pointer;
+    margin:0 5px;
+    height:30px;
+    width:30px;
+    border-radius:50px 50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    & svg{
+      fill: #fff;
+    }
+`
+
 function RemoveGanttModal({RemoveGantt,setRemoveGantt,GanttData,GanttHandler}) {
 
     const getDate=(dateVal)=>{
@@ -58,17 +76,6 @@ function RemoveGanttModal({RemoveGantt,setRemoveGantt,GanttData,GanttHandler}) {
         </Modal.Header>
         <Modal.Body>
         <Table striped bordered hover>
-
-      {
-      // 'Task ID'
-      // 'Task Name'
-      // 'Resource'
-      // 'Start Date'
-      // 'End Date'
-      // 'Duration'
-      // 'Percent Complete'
-      // 'Dependencies'
-    }
             <thead>
                 <tr>
                 <th>#</th>
@@ -89,7 +96,7 @@ function RemoveGanttModal({RemoveGantt,setRemoveGantt,GanttData,GanttHandler}) {
                             <td>{item[2]}</td>
                             <td>{getDate(item[3])[1]} {getDate(item[3])[0]}, {getDate(item[3])[2]} {getDate(item[3])[3]}</td>
                             <td>{getDate(item[4])[1]} {getDate(item[4])[0]}, {getDate(item[4])[2]} {getDate(item[4])[3]}</td>
-                            <td>@mdo</td>
+                            <td><DeleteButton onClick={()=>GanttHandler(item[0])}><GrSubtract size={24}/></DeleteButton></td>
                         </tr>)
                 })
             }

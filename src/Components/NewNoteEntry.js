@@ -31,7 +31,6 @@ const Button = styled.input`
     background-color:#EEA835;
     color: #fff;
   }
-
 `
 
 function NewNoteEntry({ModalShow,setModalShow,AddNoteHandler}) {
