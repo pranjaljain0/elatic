@@ -12,11 +12,15 @@ const client = Stitch.initializeDefaultAppClient('elatic-somyc');
 
 function Signup() {
 
-const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-atlas').db('video');
+    const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-atlas').db('Users');
+    
     client.auth.loginWithCredential(new AnonymousCredential()).then(user =>
-        db.collection('movieDetails').find({'year':1968}).asArray()
+        db.collection('UsersData').updateOne({owner_id: client.auth.user.id}, {$set:{number:42}}, {upsert:true})
+      ).then(() =>
+        db.collection('UsersData').find({owner_id: client.auth.user.id}, { limit: 100}).asArray()
       ).then(docs => {
           console.log("Found docs", docs)
+          console.log("[MongoDB Stitch] Connected to Stitch")
       }).catch(err => {
           console.error(err)
       });
