@@ -1,26 +1,26 @@
 import React from 'react'
-
+import { InputGroup,FormControl,Form } from "react-bootstrap";
 function Signup() {
     return (
         <div>
              <form>
                 <h3>Sign Up</h3>
 
-                <div className="form-group">
-                    <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" />
-                </div>
+                    <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text>Full name</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl />
+                    <FormControl />
+                    </InputGroup>
 
-                <div className="form-group">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
-                </div>
-
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
-                </div>
-
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
                 <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" placeholder="Enter password" />
