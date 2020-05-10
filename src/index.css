@@ -70,10 +70,11 @@ display: grid;  }
   flex-direction: column;
   text-align: left;
   height: 100vh;
+  margin: 0px 20px;
 }
 
 .auth-inner {
-  width: 450px;
+  width: 600px;
   margin: auto;
   background: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
@@ -91,7 +92,6 @@ display: grid;  }
   text-align: center;
   margin: 0;
   line-height: 1;
-  padding-bottom: 20px;
 }
 
 .btn-custom{

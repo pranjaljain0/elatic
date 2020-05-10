@@ -16,28 +16,8 @@ day.setHours(2,0,0,0);
 var nextDay = new Date(day); 
 nextDay.setHours(3,30,0,0);
 
-var fetched_data=[{
-    "_id": "5eb189581f4f361f05ce82c4",
-    "first_name": 'Pranjal',
-    "last_name": 'Jain',
-    "email": 'pranjaljain0697@gmail.com',
-    "password": "pass123",
-    "city": 'bhopal',
-    "state": 'mp',
-    "country": 'in',
-    "notes": [
-      
-    ],
-    "weekly_pin": [
-      
-    ],
-    "gantt": [
-     
-      
-    ]
-}]
-
-function Home() {
+function Home(props) {
+    var fetched_data=[props.location.state]
     return (
         <Container>
             <Navigation fetched_data={fetched_data}/>
@@ -45,7 +25,7 @@ function Home() {
                 <Panel type="pri" fetched_data={fetched_data}/>
                 <Panel type="sec" fetched_data={fetched_data}/>
                 <Panel type="ter" fetched_data={fetched_data}/>
-            </Row>
+            </Row>     
         </Container>
     )
 }

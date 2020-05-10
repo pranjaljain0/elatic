@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Button} from 'react-bootstrap'
 
 const Container=styled.div`
     background-color:#F8FAFB;
@@ -27,8 +28,20 @@ const Title=styled.h1`
 const UserNameTitle=styled.h3`
     color: #3d3d3d;
     cursor:pointer;
+    margin:0;
+    padding:0;
     margin-right:20px;
+    text-transform:capitalize;
 `
+
+const RightSec=styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    min-width:200px;
+`
+
 
 function Navigation({fetched_data}) {
     return (
@@ -36,9 +49,12 @@ function Navigation({fetched_data}) {
             <Title>
                 ELATIC
             </Title>
+            <RightSec>
             <UserNameTitle>
                 {fetched_data['0'].first_name}{' '}{fetched_data['0'].last_name}
             </UserNameTitle>
+            <Button type="button" className="btn btn-custom" onClick={()=>{console.log('button clicked')}}>Log out</Button>
+            </RightSec>
         </Container>
     )
 }
