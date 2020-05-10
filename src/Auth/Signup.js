@@ -2,28 +2,9 @@ import React,{useState} from 'react'
 import { InputGroup,FormControl,Form,Button } from "react-bootstrap";
 import { Redirect } from 'react-router-dom'
 
-const {
-    Stitch,
-    RemoteMongoClient,
-    AnonymousCredential
-} = require('mongodb-stitch-browser-sdk');
-
-const client = Stitch.initializeDefaultAppClient('elatic-somyc');
+const axios = require('axios')
 
 function Signup() {
-
-    const db = client.getServiceClient(RemoteMongoClient.factory, 'mongodb-atlas').db('Users');
-    
-    client.auth.loginWithCredential(new AnonymousCredential()).then(user =>
-        db.collection('UsersData').updateOne({owner_id: client.auth.user.id}, {$set:{number:42}}, {upsert:true})
-      ).then(() =>
-        db.collection('UsersData').find({owner_id: client.auth.user.id}, { limit: 100}).asArray()
-      ).then(docs => {
-          console.log("Found docs", docs)
-          console.log("[MongoDB Stitch] Connected to Stitch")
-      }).catch(err => {
-          console.error(err)
-      });
 
     const [validated, setValidated] = useState(false);
     const [RedirectVar, setRedirectVar] = useState(false)
@@ -50,7 +31,7 @@ function Signup() {
             event.stopPropagation();
         }
         else{
-            setRedirectVar(true)
+            // setRedirectVar(true)
         }
         setValidated(true);
     };
@@ -86,6 +67,31 @@ function Signup() {
                     Already registered 
                     <Button type="button" disabled={setValidationState()} className="btn btn-custom" onClick={()=>{setSignInRedir(true)}}>
                         Sign in
+                    </Button>
+                    <Button type="button" className="btn btn-custom" onClick={()=>{
+                        axios.post('https:dygon.herokuapp.com/update', 
+                        {
+                            "_id": "5eb189581f4f361f05ce82c4",
+                            "first_name": 'Pranjal',
+                            "last_name": 'Jain',
+                            "email": 'pranjaljain0697@gmail.com',
+                            "password": "pass123",
+                            "city": 'bhopal',
+                            "state": 'mp',
+                            "country": 'in',
+                            "notes": [
+                            
+                            ],
+                            "weekly_pin": [
+                            
+                            ],
+                            "gantt": [
+                            
+                            
+                            ]
+                        }).then(response=>console.log(response))
+                    }}>
+                        Check
                     </Button>
                 </p>
             </Form>
