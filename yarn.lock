@@ -8849,10 +8849,10 @@ react-bootstrap@^1.0.1:
     uncontrollable "^7.0.0"
     warning "^4.0.3"
 
-react-calendar@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-3.0.1.tgz#69c11188d7fee6fd7d837593e6e6868317f2e682"
-  integrity sha512-EGzmSZXYVxMhhGWFZKEW6I5RFWwi7TrhJIwPIFTTW2nGuMed4aHS51degFEvvSQNf6jt/LLwcXxbwC2U6D2BIg==
+react-calendar@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-3.6.0.tgz#aec0a066439942972eb980b9f47730ba17f60eb3"
+  integrity sha512-hUNuPUPmiT6RGp7kZhes/yi/G9Kk1pitdzy8LShGW6wTC920HEF3hZkyZ8yT6HZNT3HPaav441i9E9pHQVrwEA==
   dependencies:
     "@wojtekmaj/date-utils" "^1.0.2"
     get-user-locale "^1.2.0"
